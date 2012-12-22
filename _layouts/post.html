@@ -5,8 +5,9 @@ layout: default
 <h2>{{ page.title }}</h2>
 <p><em>{{ page.date | date:'%d.%m.%Y' | downcase }}, {{ page.author }}</em></p>
 
+{% if page.abstract %}
 <h3>Abstract</h3>
-
 <p>{{ page.abstract }}</p>
+{% endif %}
 
 {{ content }}

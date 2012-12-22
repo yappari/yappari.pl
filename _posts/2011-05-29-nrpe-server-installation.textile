@@ -1,0 +1,36 @@
+---
+layout: post
+
+author: kbielen
+title: Jak skonfigurować serwer nrpe pod linuxem
+abstract: Opis konfiguracji systemu nagios w celu monitorowania miejsca
+          na dyskach twardych na zdalnych sewerach z zainstalowanym
+          systemem operacyjnym typu Linux.
+---
+
+h3. Instalacja oraz konfiguracja serwera nrpe
+
+Jednym z podstawowych zadań administracyjnych jest sprawdzanie ilości wolnego
+miejsca na twardych dyskach serwerów. Poniżej przedstawię w jaki sposób należy
+skonfigurować system Linux, aby możliwe było monitorowanie dysków przy pomocy
+systemu "Nagios":http://nagios.org/.
+
+W celu monitorowania dysków przy pomocy systemu nagios należy zainstalować
+"serwer nrpe":http://exchange.nagios.org/directory/Addons/Monitoring-Agents/NRPE--2D-Nagios-Remote-Plugin-Executor/details. Zaletami serwera nrpe jest szybkość oraz małe wykorzystanie zasobów systemu podczas sprawdzeń kosztem bezpieczeństwa. Serwer nrpe nie zawiera modułu autoryzacji, a pozwala jedynie na ograniczenie listy adresów ip, z których można nawiązać połączenie. Alternatywą jest np. wywoływanie skryptów nagiosa poprzez ssh.
+
+W celu skonfigurowania serwera nrpe pod systemem "Debian":http://debian.org należy:
+# zainstalować pakiet nagios-nrpe-server: @sudo apt-get install nagios-nrpe-server@,
+# edytować pliki znajdujące się w katalogu /etc/nagios/nrpe.
+
+Lokalna konfiguracja powinna znaleźć się w katalogu _nrpe.d_ lub w pliku _nrpe_local.cfg_.
+Należy zwrócić uwagę na dwie dyrektywy:
+* _allowed_hosts_ - lista adresów ip, z których można nawiązać połączenie z serwerem nrpe,
+* _command_ - w poleceniu command definiuje się polecenia, które mogą być
+  zdalnie wykonane na serwerze nrpe, przykładowo dla sprawdzania wolnego miejsca na dysku hda1:
+
+<pre>
+command[check_hda1]=/usr/lib/nagios/plugins/check_disk \
+                    -w 20% -c 10% -p /dev/hda1
+</pre>
+
+Po tych zabiegach możliwe jest już zdalne sprawdzanie ilości wolnego miejsca na dysku (oraz innych parametrów) przy pomocy systemu Nagios.

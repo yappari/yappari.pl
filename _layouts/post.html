@@ -10,4 +10,10 @@ layout: default
 <p>{{ page.abstract }}</p>
 {% endif %}
 
-{{ content }}
+<!--
+    FIXME: poniższe wywołanie funkcji 'replace' jest potrzbne
+    ponieważ, textile wstawia <br /> w środku paragrafów, jeśli
+    napotka w pliku źródłownym znak nowej linii, ale oczywiście
+    to rozwiązanie jest kiepskie...
+-->
+{{ content | replace:'<br />',''}}

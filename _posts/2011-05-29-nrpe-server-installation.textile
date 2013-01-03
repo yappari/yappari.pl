@@ -3,9 +3,9 @@ layout: post
 
 author: kbielen
 title: Jak skonfigurować serwer nrpe pod linuxem
-abstract: Opis konfiguracji systemu nagios w celu monitorowania miejsca
-          na dyskach twardych na zdalnych sewerach z zainstalowanym
-          systemem operacyjnym typu Linux.
+abstract: Opis konfiguracji serwera nrpe dla systemu nagios, w celu
+          monitorowania miejsca na dyskach twardych, na zdalnych sewerach
+          z zainstalowanym systemem operacyjnym typu Linux.
 ---
 
 h3. Instalacja oraz konfiguracja serwera nrpe

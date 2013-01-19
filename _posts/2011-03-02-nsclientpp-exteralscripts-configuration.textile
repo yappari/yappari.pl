@@ -30,7 +30,7 @@ W pliku tym należy wykonać następujące czynności:
 * ustawić zmienną _script_dir_ na ścieżkę wskazującą katalog ze skryptami,
 * zdefiniować odpowiednie polecenia w sekcji [External Scripts], np:
 
-<pre>check_test=scripts\test.exe</pre>
+<pre>check_test=scripts\test.exe [arg1] [arg2]</pre>
 
 Po zrestartowaniu/uruchomieniu usługi NSClient++ możemy wywołać skrypt
 z innej maszyny przy użyciu narzędzia _check_nrpe_ , przykład:
@@ -38,7 +38,7 @@ z innej maszyny przy użyciu narzędzia _check_nrpe_ , przykład:
 * xxx.xxx.xxx.xxx - adres IP zdalnego serwera, na którym chcemy uruchomić skrypt,
 * check_test - nazwa zdefiniowanej komendy w sekcji [External Scripts] konfiguracji program NSClient++.
 
-h3. Przekazywanie parametrów do skryptu
+h3. Przekazywanie zdalnych parametrów do skryptu
 
 Istnieje możliwość przekazywania parametrów do zdalnych skryptów,
 ale ze względów bezpieczeństwa nie jest to zalecane.
@@ -51,6 +51,6 @@ Aby skonfigurować przekazywanie parametrów ze zdalnej maszyny należy:
 
 <pre>check_test=scripts\test.exe $ARG1$ $ARG2$</pre>
 
-* wywołanie polecenia _check_nrpe_:
+* wywołanie polecenia _check_nrpe_ w następujący sposób:
 
 <pre>./check_nrpe -H xxx.xxx.xxx.xxx -c check_test -a arg1 arg2</pre>

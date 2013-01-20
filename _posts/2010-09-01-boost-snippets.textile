@@ -129,3 +129,88 @@ W linii nr. 7 tworzymy obiekt typu boost::path, który definiuje
 wskazuje ścieżka istnieje oraz czy jest to katalog. Następnie tworzymy
 rekursywny iterator służący do przeglądania katalogu oraz wypisujemy
 na wyjście standardowe nazwy wszystkich plików "zwykłych" (funkcja is_regular).
+
+h3. Wyrażenia regularne
+
+W skład pakietu "boost":http://boost.org wchodzi biblioteka _Regex_,
+która implementuje wyrażenia regularne w języku C++. Wyrażenia regularne
+są pewnego rodzaju językiem służącym do efektywnego oraz prostego
+przetwarzania łańcuchów znaków.
+
+Pełny opis składni wyrażeń regularnych można znaleźć w dokumentacji biblioteki
+"Boost::Regex":http://www.boost.org/doc/libs/1_44_0/libs/regex/doc/html/index.html.
+
+h4. Porównywanie łańcuchów znaków
+
+Poniżej znajduje się przykład porównania danego łańcucha z wyrażeniem
+regularnym oraz odwoływanie się do wybranych części łańcucha.
+
+{% highlight cpp linenos %}
+#include <boost/regex.hpp>
+
+/*
+ * ...
+ */
+
+boost::regex regex("^(\\d{4})-(\\d{2})-(\\d{2})$");
+boost::smatch matches;
+std::string text = "2010-03-12";
+
+if (boost::regex_match(text, matches, regex))
+{
+   printf("%s\n", matches[1].str().c_str());
+}
+
+/*
+ * ...
+ */
+
+{% endhighlight %}
+
+W linii nr. 7 tworzymy obiekt wyrażenia regularnego. Wyrażenie to
+definiuje łańcuch znaków w formie @dddd-dd-dd@, gdzie literka _d_ oznacza cyfrę.
+
+W linii nr. 8 tworzymy obiekt, w którym zostaną zapisane odniesienia
+do wyszczególnionych części łańcucha. Wyszczególnione części łańcucha
+znaków są określone w wyrażeniu regularnym parami nawiasów okrągłych '()'.
+
+W linii jedenastej wywołujemy funkcję @regex_match@, która sprawdza,
+czy dany łańcuch (@text@) pasuje do wyrażenia regularnego @regex@.
+Dodatkowo funkcja zapisuje w zmiennej @matches@ wyszczególnione części
+wyrażenia regularnego.
+
+Jeśli łańcuch znaków pasuje do wyrażenia regularnego to w linii
+13 wypisujemy pierwszą grupę znaków (pierwsze 4 cyfry w łańcuchu znaków)
+na wyjście standardowe. Należy zauważyć, że pierwsza grupa znajduje się
+pod indeksem 1 w zmiennej @matches@.
+
+h4. Konwersja łańcuchów
+
+Poniżej znajduje się przykład użycia biblioteki w celu konwersji
+łańcucha znaków z jednego formatu na inny.
+
+{% highlight cpp linenos %}
+#include <boost/regex.hpp>
+
+std::string convert_date(const std::string &date)
+{
+   boost::regex regex("^(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2})$");
+   const std::string format("\\1_\\2_\\3_\\4_\\5_\\6");
+
+   return regex_replace(date, regex, format, boost::format_no_copy);
+}
+{% endhighlight %}
+
+Zadaniem przedstawionej w przykładzie funkcji @convert_date@ jest zmiana
+formatu zapisanej daty z postaci "2010-03-30 10:30:00" na "2010_03_30_10_30_00". 
+
+W linii nr.5  definiujemy wyrażenie regularne, do którego będą
+dopasowywane części (lub całość) łańcucha wejściowego.
+
+W linii nr. 6 tworzymy łańcuch definiujący format, na który należy
+przekonwertować dopasowane części łańcucha wejściowego. Cyfry poprzedzone
+slashami są indeksami odnoszącymi się do części łańcuchów dopasowanych
+w nawiasach wyrażenia regularnego.
+
+W linii nr. 7 wywołujemy funkcję @regex_replace@, która konwertuje
+łańcuch wejściowy na nowy format.

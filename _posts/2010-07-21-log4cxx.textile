@@ -1,0 +1,76 @@
+---
+layout: post
+
+author: kbielen
+title: log4cxx&#58; logowanie z poziomu C++
+---
+
+W celu zapisu logów z programów C++ można wykorzystać bibliotekę
+"log4cxx":http://logging.apache.org/log4cxx/. Jest to port biblioteki
+log4j dla języka C++. Pozwala m.in. na zapis do kilku źródeł jednocześnie, np.
+do konsoli, pliku, syslog'u, windows event log'u, ... zwalniając
+programistę z obowiązku implementowania własnych rozwiązań.
+
+h3. Przykład
+
+Poniższy przykład przedstawia wczytanie konfiguracji z pliku konfiguracyjnego oraz wypisanie testowej wiadomości:
+
+{% highlight cpp linenos %}
+#include <log4cxx/logger.h>
+#include <log4cxx/propertyconfigurator.h>
+
+const char *LOGGER_CFG_FILE_PATH = "path_to_cfg_file";
+
+int main(int argc, char *argv[])
+{
+   /*
+    * Funkcja konfiguruje bibliotekę 'log4cxx' pobierając
+    * ustawienia z pliku konfiguracyjnego
+    */
+   log4cxx::PropertyConfigurator::configure(LOGGER_CFG_FILE_PATH);
+
+   /*
+    * Pobranie wskaźnika do głównego logger'a
+    */
+   log4cxx::LoggerPtr log = log4cxx::Logger::getRootLogger();
+
+   /*
+    * Zalogowanie testowej wiadomości o poziomie 'INFO'
+    */
+   int int_value = 4;
+   std::string string_value = "test";
+   
+   LOG4CXX_INFO(log, "hello" << int_value << " " << string_value);
+   return 0;
+}
+{% endhighlight %}
+
+W linii 11 wczytujemy konfigurację biblioteki log4cxx z pliku konfiguracyjnego.
+W linii 16 pobieramy wskaźnik na _główny_ logger. W linii 24 logujemy
+przykładową informację z poziomem _INFO_.
+
+h3. Plik konfiguracyjny
+
+Poniżej przedstawiamy przykład pliku konfiguracyjnego:
+
+{% highlight cpp linenos %}
+log4j.rootLogger = debug, file
+
+####################
+# Logging to file
+####################
+
+log4j.appender.file = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.DatePattern = '.'yyyy-MM-dd
+log4j.appender.file.File = ../log/mt4_comm_watchdog.log
+
+# layout
+log4j.appender.file.layout = org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} %8r [%p] %c - %m%n
+{% endhighlight %}
+
+Powyższy przykład przedstawia konfigurację logger'a wypisującego wiadomości
+do pliku z poziomem DEBUG i wyższym. Wykonywana jest rotacja plików
+z logami o północy każdego dnia.
+
+Inne przykłady plików konfiguracyjnych można znaleźć "tutaj":log4cxx-config-exemples.html.

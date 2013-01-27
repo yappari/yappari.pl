@@ -258,8 +258,8 @@ ul>li {
 #   list-style: disc inside;
 #   padding-left: 20px;
 
-    list-style: disc inside;
-    padding-left: 20px;
+    list-style: disc;
+    margin-left: 40px;
 }
 
 ol>li {

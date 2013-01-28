@@ -3,13 +3,11 @@ layout: default
 ---
 
 {% for post in site.posts %}
-    <p>
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <p><em>{{ post.date | date:'%d.%m.%Y' | downcase }}, {{ post.author }}</em></p>
-        {% if post.abstract %}
-        <p>{{ post.abstract }}</p>
-        {% endif %}
-    </p>
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <p><em>{{ post.date | date:'%d.%m.%Y' | downcase }}, {{ post.author }}</em></p>
+    {% if post.abstract %}
+    <p>{{ post.abstract }}</p>
+    {% endif %}
     
     {% if forloop.last == false %}
     <hr />

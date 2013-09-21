@@ -7,7 +7,7 @@ from fabric.api import local, put, sudo
 
 def prepare():
     local('rm -rf _site')
-    local('jekyll')
+    local('jekyll build')
 
 
 def deploy():

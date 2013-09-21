@@ -319,6 +319,11 @@ footer a:hover {
 /*
  * yappari.pl
  */
+
+/*
+ * FIXME:
+ * - poprawić tą implementację...
+ */
 img.rounded {
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;	
@@ -328,10 +333,15 @@ img.rounded {
 
 #onas .onas table, tr, td {
     border: 0px;
+    margin-bottom: 0px;
 }
 
 #onas .onas td {
     padding: 5px;
     text-align: left;
     vertical-align: top;
+}
+
+#onas .photo {
+    width: 100px
 }

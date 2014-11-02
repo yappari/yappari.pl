@@ -3,6 +3,10 @@ layout: post
 
 author: kbielen
 title: Monitorowanie systemów z użyciem Collectd oraz Graphite
+
+abstract_only_header: Czyli jak na bieżąco zbierać statystyki wykonania
+    z naszych aplikacji (np. liczbę zalogowanych użytkowników) oraz
+    jak wizualizować te dane na grafach w interfejsie www.
 ---
 
 W celu zbierania statystyk z naszych systemów i aplikacji takich jak np. obciążenie

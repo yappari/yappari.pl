@@ -1,4 +1,4 @@
 yappari.pl
 ==========
 
-Currently tested for Jekyll 2.4.0
+Currently build with Jekyll 2.5.1

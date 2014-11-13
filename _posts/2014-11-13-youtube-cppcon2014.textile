@@ -1,0 +1,9 @@
+---
+layout: post
+
+author: kbielen
+title: Youtube&#58; CppCon2014
+---
+
+* "Bjarne Stroustrup: Make Simple Tasks Simple!":http://www.youtube.com/watch?v=nesCaocNjtQ
+* "Chandler Carruth: Efficiency with Algorithms, Performance with Data Structures":http://www.youtube.com/watch?v=fHNmRkzxHWs

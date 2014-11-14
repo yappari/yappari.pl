@@ -3,7 +3,10 @@ layout: post
 
 author: kbielen
 title: Youtube&#58; CppCon2014
+
+last_update: 14.11.2014
 ---
 
 * "Bjarne Stroustrup: Make Simple Tasks Simple!":http://www.youtube.com/watch?v=nesCaocNjtQ
 * "Chandler Carruth: Efficiency with Algorithms, Performance with Data Structures":http://www.youtube.com/watch?v=fHNmRkzxHWs
+* "Bill Emshoff:  The Joint Strike Fighter Coding Standard - Using C++ on Mission and Safety Critical Platforms":http://www.youtube.com/watch?v=sRe77Mdna0Y

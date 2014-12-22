@@ -1,0 +1,11 @@
+---
+layout: post
+
+author: kbielen
+title: Interesting articles and presentations &#35;1
+---
+
+----
+
+Reactor Dev Day 2014:
+* "Erik Meijer - One Hacker Way":http://vimeo.com/110554082

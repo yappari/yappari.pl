@@ -1,0 +1,9 @@
+---
+layout: post
+
+author: kbielen
+title: Linki na temat programowania niskopoziomowego
+---
+
+* "Programming from the Ground Up":http://savannah.nongnu.org/projects/pgubook/ (2004)
+* ...

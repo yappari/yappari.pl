@@ -3,21 +3,27 @@ layout: default
 ---
 
 {% for post in site.posts %}
-    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 
-    <p><em>
-        {{ post.date | date:'%d.%m.%Y' | downcase }}, {{ post.author }}
-    </em></p>
+    {% unless post.dont_list %}
 
-    {% if post.abstract_only_header %}
-    <p>{{ post.abstract_only_header }}</p>
-    {% endif %}
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 
-    {% if post.abstract %}
-    <p>{{ post.abstract }}</p>
-    {% endif %}
+        <p><em>
+            {{ post.date | date:'%d.%m.%Y' | downcase }}, {{ post.author }}
+        </em></p>
+
+        {% if post.abstract_only_header %}
+        <p>{{ post.abstract_only_header }}</p>
+        {% endif %}
+
+        {% if post.abstract %}
+        <p>{{ post.abstract }}</p>
+        {% endif %}
     
-    {% if forloop.last == false %}
-    <hr />
-    {% endif %} 
+        {% if forloop.last == false %}
+        <hr />
+        {% endif %} 
+
+    {% endunless %}
+
 {% endfor %}

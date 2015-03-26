@@ -1,4 +1,12 @@
 yappari.pl
 ==========
 
-Currently build with Jekyll 2.5.1
+
+Wymagania
+---------
+
+Instalacja dla Ubuntu 14.04:
+
+* `sudo apt-get install nodejs ruby-dev`,
+* `gem install jekyll`,
+* `gem install nokogiri`

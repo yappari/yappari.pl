@@ -5,8 +5,6 @@ author: kbielen
 title: cron-apt&#58; powiadomienia o "update'ach"
 ---
 
-----
-
 Na systemach Debian/Ubuntu można skorzystać z narzędzia @cron-apt@ w celu ustawienia
 automatycznego powiadamiana adminów o oczekujących update'ach systemu.
 

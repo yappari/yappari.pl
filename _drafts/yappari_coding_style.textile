@@ -1,0 +1,10 @@
+---
+layout: post
+
+author: kbielen
+title: yappari.pl&#58; konwencje kodowania
+---
+
+Nasze konwencje kodowania:
+* "C++":cpp_coding_style.html 
+* "Python":python_coding_style.html

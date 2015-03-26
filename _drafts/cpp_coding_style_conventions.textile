@@ -1,0 +1,11 @@
+---
+layout: post
+
+author: kbielen
+title: C++&#58; zasady kodowania 
+
+dont_list: true
+---
+
+
+...

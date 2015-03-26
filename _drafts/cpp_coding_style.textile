@@ -1,0 +1,12 @@
+---
+layout: post
+
+author: kbielen
+title: C++&#58; konwencja kodowania
+
+dont_list: true
+---
+
+* "formatowanie kodu":cpp_coding_style_formatting.html,
+* "konwencje tworzenia nazw":cpp_coding_style_naming_conventions.html,
+* "zasady kodowania":cpp_coding_style_conventions.html.

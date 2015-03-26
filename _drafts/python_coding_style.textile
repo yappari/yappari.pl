@@ -1,0 +1,10 @@
+---
+layout: post
+
+author: kbielen
+title: Python&#58; konwencja kodowania
+
+dont_list: true
+---
+
+...

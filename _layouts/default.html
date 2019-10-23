@@ -3,10 +3,17 @@
   <head>
     <meta charset='utf-8'>
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Chivo:900'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" />
+
+    {% if page.url == "/" or page.url == "/blog.html" or page.url == "/about.html" %}
+      <link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
+      <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" />
+      <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" />
+    {% else %}
+      <link rel="stylesheet" type="text/css" href="../../../stylesheets/reset.css" />
+      <link rel="stylesheet" type="text/css" href="../../../stylesheets/stylesheet.css" />
+      <link rel="stylesheet" type="text/css" href="../../../stylesheets/pygment_trac.css" />
+    {% endif %}
 
     <title>yappari.pl</title>
   </head>
@@ -20,9 +27,15 @@
         </header>
 
         <section id="menu" class="clearfix">
-          <a href="/index.html" class="button"><span>Home</span></a>
-          <a href="/blog.html" class="button"><span>Blog</span></a>
-          <a href="/about.html" id="last-menu-button" class="button"><span>O nas</span></a>
+          {% if page.url == "/" or page.url == "/blog.html" or page.url == "/about.html" %}
+            <a href="index.html" class="button"><span>Home</span></a>
+            <a href="blog.html" class="button"><span>Blog</span></a>
+            <a href="about.html" id="last-menu-button" class="button"><span>O nas</span></a>
+          {% else %}
+            <a href="../../../index.html" class="button"><span>Home</span></a>
+            <a href="../../../blog.html" class="button"><span>Blog</span></a>
+            <a href="../../../about.html" id="last-menu-button" class="button"><span>O nas</span></a>
+          {% endif %}
         </section>
 
         <hr>
